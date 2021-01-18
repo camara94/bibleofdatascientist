@@ -1,6 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
+import Course  from './components/CourseComponent';
 import { Navbar, NavbarBrand } from 'reactstrap';
+
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
             <NavbarBrand href="/">Bible Of Data Scientist</NavbarBrand>
           </div>
       </Navbar>
+      <Course />
     </div>
   );
 }
