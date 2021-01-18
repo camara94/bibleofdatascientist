@@ -1,0 +1,22 @@
+{
+  "name": "bibleofdatascientist",
+  "version": "1.0.0",
+  "description": "Mon api pour les cours de world quant university",
+  "main": "index.js",
+  "dependencies": {
+    "lite-server": "^2.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "npm run lite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "lite-server",
+    "lite": "lite-server"
+  },
+  "keywords": [
+    "data",
+    "science"
+  ],
+  "author": "Camara Laby Damaro",
+  "license": "ISC"
+}
