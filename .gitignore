@@ -1,3 +1,4 @@
 node_modules
 ./node_modules
 ./lite-server/node_modules
+./bible-of-data-scientist/node_modules
