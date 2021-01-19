@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import Course  from './components/CourseComponent';
-import { Navbar, NavbarBrand } from 'reactstrap';
 import { COURS  } from './shared/course';
+import Moduleone  from './components/moduleoneComponent';
+import Header from './components/HeaderComponent';
+import Footer from './components/footer';
 
 
 class App extends Component {
@@ -15,12 +16,9 @@ class App extends Component {
   render(){
     return (
       <div>
-        <Navbar dark color="secondary">
-            <div className="container">
-              <NavbarBrand href="/">Bible Of Data Scientist</NavbarBrand>
-            </div>
-        </Navbar>
-        <Course courses={this.state.courses} />
+        <Header />
+        <Moduleone courses={this.state.courses} />
+        <Footer />
       </div>
     );
   }

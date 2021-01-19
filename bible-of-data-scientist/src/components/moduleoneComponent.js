@@ -1,9 +1,10 @@
-import React, { Component, useState } from 'react';
-import { Card, CardBody, CardText, CardTitle, Collapse, Button } from 'reactstrap';
+import React, { Component } from 'react';
+
+import { Card, CardBody, CardTitle, Collapse, Button } from 'reactstrap';
 
 
 
-class Course extends Component {
+class Moduleone extends Component {
 
     constructor(props) {
         super(props);
@@ -12,8 +13,8 @@ class Course extends Component {
             selectedCourse: null
         }
     }
-    setIsOpen() {
-        this.setState({isOpen: true});
+    setIsOpen(v) {
+        this.setState({isOpen: v});
     }
     toggle = () => this.setIsOpen(!this.state.isOpen);
 
@@ -21,12 +22,28 @@ class Course extends Component {
         this.setState({ selectedCourse: course});
     }
 
+    SingleCourse(course, singleCourse){
+        if (singleCourse == null) 
+            return (
+                <div className="col-12 col-md-9 mt-3">
+                    <Card>
+                        <iframe width="auto" height="450" frameborder="1" src={course.linkiframe} allowfullscreen="allowfullscreen"></iframe>
+                        <CardBody>
+                            <CardTitle>{course.title}</CardTitle>
+                        </CardBody>
+                    </Card>
+                </div>
+            ) ;
+        else
+            return (<div></div>);
+    }
+
     renderCourse(course) {
         if (course != null)
             return(
-                <div className="col-12 col-md-8 mt-3">
+                <div className="col-12 col-md-9 mt-3">
                         <Card>
-                        <iframe width="auto" height="450" frameborder="1" src={course.linkiframe} allowfullscreen="allowfullscreen"></iframe>
+                        <iframe width="auto" height="500" frameborder="1" src={course.linkiframe} allowfullscreen="allowfullscreen"></iframe>
                             <CardBody>
                                 <CardTitle>{course.title}</CardTitle>
                             </CardBody>
@@ -40,11 +57,12 @@ class Course extends Component {
     }
 
     render() {
-            const courses = this.props.courses.map((course, index)=>{
+
+        const courses = this.props.courses.map((course, index)=>{
                 return (
-                    <div key={index} className="col-12 col-md-8 mt-3">
+                    <div key={index} className="col-12 col-md-9 mt-3">
                         <Card>
-                        <iframe width="auto" height="380" frameborder="1" src={course.linkiframe} allowfullscreen="allowfullscreen"></iframe>
+                        <iframe width="auto" height="500" frameborder="1" src={course.linkiframe} allowfullscreen="allowfullscreen"></iframe>
                             <CardBody>
                                 <CardTitle>{course.title}</CardTitle>
                             </CardBody>
@@ -61,12 +79,13 @@ class Course extends Component {
                 </li>
             );
         });
+
         return (
             <div className="container-fluid">
                 <div className="row mx-auto">
 
 
-                  <div className="col-12 col-md-4">
+                  <div className="col-12 col-md-3">
                     <Button color="primary" className="form-control mt-3" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Module I</Button>
                         <Collapse isOpen={this.state.isOpen}>
                             
@@ -79,6 +98,7 @@ class Course extends Component {
 
 
                     {this.renderCourse(this.state.selectedCourse)}
+                    {this.SingleCourse(this.props.courses[0], this.state.selectedCourse)}
                        
                 </div>
                 
@@ -88,4 +108,4 @@ class Course extends Component {
     }
 }
 
-export default Course;
+export default Moduleone;
