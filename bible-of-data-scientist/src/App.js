@@ -1,25 +1,18 @@
 import React, { Component } from 'react';
-import './App.css';
-import { COURS  } from './shared/course';
-import Moduleone  from './components/moduleoneComponent';
-import Header from './components/HeaderComponent';
-import Footer from './components/footer';
+import Main from './components/mainComponent';
+import { BrowserRouter } from 'react-router-dom'
+
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      courses: COURS
-    };
-  }
+  
   render(){
     return (
-      <div>
-        <Header />
-        <Moduleone courses={this.state.courses} />
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <div>
+          <Main />
+        </div>
+      </BrowserRouter>
     );
   }
 }

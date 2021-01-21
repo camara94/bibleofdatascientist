@@ -1,28 +1,60 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand, Jumbotron } from 'reactstrap';
+import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.toggleNav = this.toggleNav.bind(this);
+        this.state = {
+          isNavOpen: false
+        };
+      }
+
+      toggleNav() {
+        this.setState({
+          isNavOpen: !this.state.isNavOpen
+        });
+      }
+
     render() {
-        return (
-            <>
-               <Navbar dark>
+        return(
+            <div>
+                <Navbar  expand="md">
                     <div className="container">
-                    <NavbarBrand href="/">Bible Of Data Scientist</NavbarBrand>
+                        <NavbarToggler onClick={this.toggleNav} />
+                        <NavbarBrand className="mr-auto" href="/home"><img src='../images/mylogo1.png' height="30" width="41" alt='Bible Of Data Scientist' /></NavbarBrand>
+                        <Collapse isOpen={this.state.isNavOpen} navbar>
+                            <Nav navbar>
+                            <NavItem>
+                                <NavLink className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span> Home</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink className="nav-link" to='/about'><span className="fa fa-info fa-lg"></span> About Me</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink className="nav-link"  to='/course'><span className="fa fa-list fa-lg"></span> Course</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink className="nav-link" to='/contactus'><span className="fa fa-address-card fa-lg"></span> Contact Us</NavLink>
+                            </NavItem>
+                            </Nav>
+                        </Collapse>
                     </div>
                 </Navbar>
-
                 <Jumbotron>
                     <div className="container">
-                        <div className="row">
+                        <div className="row row-header">
                             <div className="col-12 col-sm-6">
-                                <h1>Bible Of Data Scientist</h1>
+                                 <h1>Bible Of Data Scientist</h1>
                                 <p>In the end you should only measure and look at the numbers that drive action, meaning that the data tells you what you should do next.</p>
                             </div>
                         </div>
                     </div>
-                </Jumbotron> 
-            </>
-        )
+                </Jumbotron>
+            </div>
+        );
     }
 }
 
