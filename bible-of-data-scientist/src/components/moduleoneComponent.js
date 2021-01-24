@@ -73,7 +73,7 @@ class Moduleone extends Component {
 
         const titles = this.props.courses.map((course, index)=>{
             return (
-               <li key={index} className="col-12 col-md-12 list-group-item form-control" 
+               <li id="video" key={index} className="col-12 col-md-12 list-group-item form-control" 
                onClick={() => this.onCourseSelect(course)}>
                    {course.title}
                 </li>

@@ -34,11 +34,12 @@ function About(props) {
             </div>
             <div className="row row-content">
                 <div className="col-12 col-md-6">
+                    <h3>{props.about.firstname + ' ' + props.about.lastname}</h3>
                     <p>{props.about.description}</p>
                 </div>
                 <div className="col-12 col-md-5">
                     <Card>
-                        <CardHeader className="bg-primary text-white">{props.about.firstname + ' ' + props.about.lastname}</CardHeader>
+                        <CardHeader className="bg-primary text-white">Contactez-moi</CardHeader>
                         <CardBody>
                             <dl className="row p-1">
                                 <dt className="col-6">Email</dt>
