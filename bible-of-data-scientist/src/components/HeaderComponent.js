@@ -17,9 +17,8 @@ class Header extends Component {
       }
 
       handleLogin(event) {
+        alert("Username: " + this.username.value + " Password: " + this.password.value + " Remember: " + this.remember.checked);
         this.toggleModal();
-        alert("Username: " + this.username.value + " Password: " + this.password.value
-            + " Remember: " + this.remember.checked);
         event.preventDefault();
 
     }
@@ -41,7 +40,7 @@ class Header extends Component {
             <>
                 <Navbar  expand="md">
                     <div className="container">
-                        <NavbarToggler onClick={this.toggleNav} />
+                        <NavbarToggler onClick={this.toggleNav}  className="bg-primary"/>
                         <NavbarBrand className="mr-auto" href="/home"><img src='../images/mylogo1.png' height="30" width="41" alt='Bible Of Data Scientist' /></NavbarBrand>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
@@ -60,7 +59,7 @@ class Header extends Component {
                             </Nav>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                    <Button outline onClick={this.toggleModal}>
+                                    <Button outline onClick={this.toggleModal} color="primary">
                                         <span className="fa fa-sign-in fa-lg"></span>
                                     </Button>
                                 </NavItem>
@@ -79,7 +78,7 @@ class Header extends Component {
                     </div>
                 </Jumbotron>
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                    <ModalHeader toggle={this.toggleModal}>
+                    <ModalHeader className="bg-primary text-white" toggle={this.toggleModal}>
                         Login
                     </ModalHeader>
                     <ModalBody>
@@ -96,7 +95,7 @@ class Header extends Component {
                                 <Input type="checkbox" />
                                 <Label check>Remember me</Label>
                             </FormGroup>
-                            <Button type="submit" value="submit" color="primary">Login</Button>
+                            <Button type="submit" color="primary">Login</Button>
                         </Form>
                     </ModalBody>
                 </Modal>
