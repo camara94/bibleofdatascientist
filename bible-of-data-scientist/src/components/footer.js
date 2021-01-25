@@ -5,24 +5,15 @@ function Footer(props) {
     <div className="footer">
         <div className="container">
             <div className="row justify-content-center">             
-                
-                <div className="col-7 col-sm-5">
-                    <h5>My Contact</h5>
-                    <address>
-		              <i className="fa fa-phone fa-lg"></i>: +216 56352275<br />
-		              <i className="fa fa-fax fa-lg"></i>: +216 29352069<br />
-		              <i className="fa fa-envelope fa-lg"></i>: <a href="mailto:ldamaro98@gmail.com">
-                         ldamaro98@gmail.com</a>
-                    </address>
-                </div>
                 <div className="col-12 col-sm-4 align-self-center">
                     <div className="text-center">
-                        <a className="btn btn-social-icon btn-google" href="http://google.com/+"><i className="fa fa-google-plus"></i></a>
-                        <a className="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i className="fa fa-facebook"></i></a>
-                        <a className="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i className="fa fa-linkedin"></i></a>
-                        <a className="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i className="fa fa-twitter"></i></a>
-                        <a className="btn btn-social-icon btn-google" href="http://youtube.com/"><i className="fa fa-youtube"></i></a>
-                        <a className="btn btn-social-icon" href="mailto:"><i className="fa fa-envelope-o"></i></a>
+                        <a className="btn btn-social-icon btn-github" href={props.about.links.github} target="_blank"><i className="fa fa-github"></i></a>&nbsp;
+                        <a className="btn btn-social-icon btn-codepen" href={props.about.links.codepen} target="_blank"><i className="fa fa-codepen"></i></a>&nbsp;
+                        <a className="btn btn-social-icon btn-facebook" href={props.about.links.facebook} target="_blank"><i className="fa fa-facebook"></i></a>&nbsp;
+                        <a className="btn btn-social-icon btn-linkedin" href={props.about.links.linkedin} target="_blank"><i className="fa fa-linkedin"></i></a>&nbsp;
+                        <a className="btn btn-social-icon btn-twitter" href={props.about.links.twitter} target="_blank"><i className="fa fa-twitter"></i></a>&nbsp;
+                        <a className="btn btn-social-icon btn-google" href={props.about.links.youtube} target="_blank"><i className="fa fa-youtube"></i></a>&nbsp;
+                        <a className="btn btn-social-icon btn-globe" href="https://camaratek.com" target="_blank"><i className="fa fa-globe"></i></a>
                     </div>
                 </div>
             </div>

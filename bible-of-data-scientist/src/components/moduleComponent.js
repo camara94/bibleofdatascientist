@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
 
-import { Card, CardBody, CardTitle, Collapse, Button } from 'reactstrap';
+import { Card, CardBody, CardTitle, Collapse, Button, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 
 
-class Moduleone extends Component {
+class Module extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             isOpen: false,
-            selectedCourse: null
+            selectedCourse: null,
+            currentPage: 1,
+            coursePerPage: 8
         }
+        this.handleClick = this.handleClick.bind(this);
     }
+
+
+    handleClick(event) {
+        this.setState({
+          currentPage: Number(event.target.id)
+        });
+      }
+    
+
     setIsOpen(v) {
         this.setState({isOpen: v});
     }
@@ -57,6 +69,48 @@ class Moduleone extends Component {
     }
 
     render() {
+        const {isOpen, selectedCourse , currentPage, coursePerPage } = this.state;
+        // Logic for displaying todos
+        const indexOfLastCourse = currentPage * coursePerPage;
+        const indexOfFirstCourse = indexOfLastCourse - coursePerPage;
+        const currentCourse = this.props.courses.courses.slice(indexOfFirstCourse, indexOfLastCourse);
+
+        const renderCourse = currentCourse.map((course, index) => {
+            return (
+                <li id="video" key={index} className="col-12 col-md-12 list-group-item form-control" 
+               onClick={() => this.onCourseSelect(course)}>
+                   {course.title}
+                </li>)
+            }
+        );
+
+        const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(this.props.courses.courses.length / coursePerPage); i++) {
+            pageNumbers.push(i);
+        }
+    
+        const renderPageNumbers = pageNumbers.map(number => {
+            return (
+              <li
+              style={{
+                  listStyleType:'none',
+                   display: 'inline-block', 
+                   width: '25px', 
+                   background: 'gainsboro', 
+                   margin: '2px',
+                   textAlign: 'center',
+                   borderRadius: '5px',
+                }}
+                key={number}
+                id={number}
+                onClick={this.handleClick}
+              >
+                {number}
+              </li>
+              
+            );
+          });
+      
 
         const courses = this.props.courses.courses.map((course, index)=>{
                 return (
@@ -72,17 +126,20 @@ class Moduleone extends Component {
         });
 
         var coursInter = [];
-        for(let i = 0; i < 5; i++)
+        for(let i = this.state.initalI; i < this.state.count; i++)
            coursInter[i] = this.props.courses.courses[i];
 
         const titles = coursInter.map((course, index)=>{
             return (
-               <li id="video" key={index} className="col-12 col-md-12 list-group-item form-control" 
+                <li id="video" key={index} className="col-12 col-md-12 list-group-item form-control" 
                onClick={() => this.onCourseSelect(course)}>
                    {course.title}
                 </li>
             );
         });
+
+        
+
 
         return (
             <div className="container-fluid">
@@ -92,11 +149,16 @@ class Moduleone extends Component {
                   <div className="col-12 col-md-3">
                     <Button color="primary" className="form-control mt-3" onClick={this.toggle} style={{ marginBottom: '1rem' }}>{this.props.courses.title}</Button>
                         <Collapse isOpen={this.state.isOpen}>
-                            
-                            <ul className="list-group">
-                                {titles}
-                            </ul>
                           
+                            <ul className="list-group">
+                                {renderCourse}
+                            </ul>
+                            <ul>
+                                {renderPageNumbers}
+                            </ul>
+                            
+              
+            
                         </Collapse>
                     </div>
 
@@ -112,4 +174,4 @@ class Moduleone extends Component {
     }
 }
 
-export default Moduleone;
+export default Module;

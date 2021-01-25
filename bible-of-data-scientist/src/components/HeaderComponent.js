@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavbarBrand, NavbarToggler,Input, Collapse, NavItem, Jumbotron, Button, Modal, ModalBody, ModalHeader, Form, FormGroup, Label} from 'reactstrap';
+import { Nav, Navbar, NavbarBrand, NavbarToggler,Input, Collapse, 
+    NavItem, Jumbotron, Button, Modal, ModalBody, ModalHeader, 
+    Form, FormGroup, Label,
+    UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
@@ -50,8 +53,26 @@ class Header extends Component {
                             <NavItem>
                                 <NavLink className="nav-link" to='/about'><span className="fa fa-info fa-lg"></span> About Me</NavLink>
                             </NavItem>
-                            <NavItem>
-                                <NavLink className="nav-link"  to='/course'><span className="fa fa-list fa-lg"></span> Course</NavLink>
+                            <NavItem className="nav-link">
+                                
+                                <UncontrolledDropdown>
+                                    <DropdownToggle caret className="fa fa-book fa-lg">
+                                        Courses
+                                    </DropdownToggle>
+                                    <DropdownMenu >
+                                        <DropdownItem header>Data Science</DropdownItem>
+                                        <DropdownItem >
+                                            <NavLink to="/moduleone">Module I</NavLink>
+                                        </DropdownItem>
+                                        <DropdownItem >
+                                            <NavLink to="/moduletwo">Module II</NavLink>
+                                        </DropdownItem>
+                                        <DropdownItem header>Project</DropdownItem>
+                                        <DropdownItem >
+                                            <NavLink to="/resources">Resources</NavLink>
+                                        </DropdownItem>
+                                    </DropdownMenu>
+                                </UncontrolledDropdown>
                             </NavItem>
                             <NavItem>
                                 <NavLink className="nav-link" to='/contact'><span className="fa fa-address-card fa-lg"></span> Contact Us</NavLink>
